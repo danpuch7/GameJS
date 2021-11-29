@@ -20,12 +20,10 @@ function shuffle(array) {
 for(let i=1;i<=15;i++)
 {
     numbers.push(i)
-    console.log(i)
 }
 
 shuffle(numbers)
 
-console.log(numbers)
 
 for (let i=0;i<15;i++)
 {
