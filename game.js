@@ -3,19 +3,38 @@ field= document.querySelector('.game-field');
 
 
 const empty={
-    top:0,
-    left:0
+    top:3,
+    left:3
 };
 
 const cells = []
 
-cells.push(empty)
+const numbers = []
 
-for (let i=1;i<=15;i++)
+
+
+function shuffle(array) {
+    array.sort(() => Math.random() - 0.5);
+}
+
+for(let i=1;i<=15;i++)
 {
+    numbers.push(i)
+    console.log(i)
+}
+
+shuffle(numbers)
+
+console.log(numbers)
+
+for (let i=0;i<15;i++)
+{
+
     cell = document.createElement('div')
     cell.className='cell';
-    cell.textContent = i;
+    cell.textContent = numbers[i];
+
+
 
     const left = i % 4;
     const top = (i - left) / 4;
@@ -63,4 +82,4 @@ for (let i=1;i<=15;i++)
     });
 }
 
-console.log(cells)
+cells.push(empty)
