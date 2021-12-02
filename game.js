@@ -1,11 +1,15 @@
 
 field= document.querySelector('.game-field');
-
+modal = document.getElementById('modwindow')
+btn_close = document.querySelector('.close')
+btn_next = document.querySelector('.yes')
 
 const empty={
     top:3,
-    left:3
+    left:3,
+    iter:16
 };
+
 
 const cells = []
 
@@ -40,8 +44,11 @@ for (let i=0;i<15;i++)
     cells.push({
         top:(i - left) / 4,
         left: i % 4,
-        elem:cell
+        elem:cell,
+        iter:numbers[i]
     })
+
+
 
     cell.style.left = `${left * 100}px`;
     cell.style.top = `${top * 100}px`;
@@ -77,7 +84,40 @@ for (let i=0;i<15;i++)
 
         cell.left = emptyLeft;
         cell.top = emptyTop;
+
+
+
+        const win = cells.every(elem=>{
+            return elem.iter === elem.top * 4 +elem.left+1
+        })
+
+        if (win) {
+            console.log(modal)
+            modal.style.display = 'flex'
+        }
+
     });
+
+    btn_close.addEventListener('click',()=>{
+        modal.style.display='none'
+    })
+
+    btn_next.addEventListener('click',()=>{
+        window.location.reload()
+    })
+
 }
 
 cells.push(empty)
+
+
+
+
+
+// if (cells.every((el, ix) => el.left == win[ix].left) && cells.every((el, ix) => el.top == win[ix].top)) {
+//             // document.body.style.backgroundColor = 'black';
+//             console.log("WIN")
+//
+// }
+
+
